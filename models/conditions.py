@@ -170,14 +170,14 @@ class conditions( uty ):
             
 
 
-    def create(self, cond:str = None, listed:int = 1)-> dict:
+    def create(self, cond:str = None, listed:int = 0)-> dict:
 
         """
         Function For addition of conditions 
         
         Parameters:
             cond(str): cond of condition to be added
-            listed(int):0/1 default 1
+            listed(int):0/1 default 0
 
         Returns
             result(dict) = {"result":True/False, "data":"SuccessFul/ErrorCode"}

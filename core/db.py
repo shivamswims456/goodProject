@@ -19,7 +19,9 @@ class db( object ):
 
         except Exception as e:
 
-            log.info(f"loggingError -> {str(e)}")
+
+
+            log.error(f"loggingError -> {str(e)}")
 
 
 
@@ -75,6 +77,8 @@ class db( object ):
 
 
         except Exception as e:
+
+            print(e)
 
             log.error(f'funcError -> {str(e)}, additionalInfo -> {"query":{str(query)}}')
 

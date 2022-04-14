@@ -211,7 +211,8 @@ class pincodes( uty ):
             elif checkPresent["result"] == False:
 
                 result = checkPresent
-                log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                log.warning(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                
 
             else:
 

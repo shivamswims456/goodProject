@@ -170,14 +170,14 @@ class organs( uty ):
             
 
 
-    def create(self, name:str = None, listed:int = 1)-> dict:
+    def create(self, name:str = None, listed:int = 0)-> dict:
 
         """
         Function For addition of organs 
         
         Parameters:
             name(str): Name of organ to be added
-            listed(int):0/1 default 1
+            listed(int):0/1 default 0
 
         Returns
             result(dict) = {"result":True/False, "data":"SuccessFul/ErrorCode"}

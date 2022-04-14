@@ -28,3 +28,38 @@ ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'status' i
 ERROR[organs.py:update:39]:{additionalInfo: {"organ":kidney, "listed":1}}
 ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'name' in 'field list'
 ERROR[conditions.py:create:212]:{additionalInfo: {"condition":Malaria, "listed":1}}
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+INFO[db.py:__init__:22]:loggingError -> 1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)
+ERROR[db.py:__query__:126]:queryError -> 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '["834001", "834002", "834003"], '["kidney"]', '["Dibetise"]', 1, 0)' at line 1
+ERROR[db.py:__query__:126]:queryError -> 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '["834001", "834002", "834003"], '["kidney"]', '["Dibetise"]', 1, 0)' at line 1
+ERROR[db.py:__query__:126]:queryError -> 1054 (42S22): Unknown column 'associatedNames' in 'field list'
+ERROR[db.py:__query__:126]:queryError -> 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from cultures where name = 'K.F.T' and pincodesAvailable in ('834001')' at line 1
+ERROR[db.py:__query__:126]:queryError -> 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '['name', 'deliveryTime', 'components', 'assoicatedNames', 'numberOfParameters', ' at line 1
+ERROR[db.py:__query__:126]:queryError -> 1241 (21000): Operand should contain 1 column(s)
+ERROR[db.py:__query__:126]:queryError -> 1305 (42000): FUNCTION antalia.dict_keys does not exist
+ERROR[db.py:__query__:126]:queryError -> 3141 (22032): Invalid JSON text in argument 1 to function json_contains: "Invalid value." at position 1.
+ERROR[db.py:__query__:126]:queryError -> 3141 (22032): Invalid JSON text in argument 1 to function json_contains: "Invalid value." at position 1.
+ERROR[db.py:__query__:126]:queryError -> 3141 (22032): Invalid JSON text in argument 1 to function json_contains: "Invalid value." at position 1.
