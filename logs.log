@@ -25,3 +25,4 @@ ERROR[pincodes.py:create:123]:{"funcError":list index out of range, additionalIn
 ERROR[pincodes.py:create:123]:{"funcError":list index out of range, additionalInfo: {"pincode":834002, "status":1}}
 ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'where clause'
 ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'status' in 'field list'
+ERROR[organs.py:update:39]:{additionalInfo: {"organ":kidney, "listed":1}}

@@ -10,7 +10,7 @@ class pincodes( uty ):
         self.db = self.db()
 
 
-    def delete(self, pincode:str = None):
+    def delete(self, pincode:str = None)-> dict:
 
         
         """
@@ -47,7 +47,7 @@ class pincodes( uty ):
             
 
 
-    def read(self, pincode:str = None, status:int = None):
+    def read(self, pincode:str = None, status:int = None)-> dict:
 
         """
         Function for reading list pincodes with same state
@@ -87,29 +87,25 @@ class pincodes( uty ):
 
                 statusQuery = self.db.query("select (listed) from pincodes where pincodes = '{}'".format(pincode))
                 
-                if statusQuery["result"]:
+                if not statusQuery["result"]:
 
-                    result = {"result":True, "data":statusQuery["data"]}
-
-                else:
-
-                    result = statusQuery
                     log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+
+                
+                result = statusQuery
 
 
 
             elif status != None:
 
                 pinQuery = self.db.query("select (pincodes) from pincodes where listed = {}".format(status))
-                
-                if pinQuery["result"]:
 
-                    result = {"result":True, "data":pinQuery["data"]}
+                if not pinQuery["result"]:
 
-                else:
-
-                    result = pinQuery
                     log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+
+                result = pinQuery
+
 
         
         return result
@@ -121,7 +117,7 @@ class pincodes( uty ):
 
 
 
-    def update(self, pincode:str = None, status:int = 0):
+    def update(self, pincode:str = None, status:int = 0)-> dict:
 
 
         """
@@ -142,17 +138,12 @@ class pincodes( uty ):
 
         if pincode != None:
 
-            result = {"result":False, "data":"Func202"}
-
-
             checkPresent = self.db.query("select (pincodes) from pincodes where pincodes = '{}'".format(pincode))
-
 
             if checkPresent["result"] and len(checkPresent["data"]) != 0:
                     
                 queryResult = self.db.query( "update pincodes set pincodes='{}', listed={} where pincodes = '{}';".format(pincode, status, pincode) )
 
-                
 
                 if queryResult["result"]:
 
@@ -170,9 +161,10 @@ class pincodes( uty ):
                 result = checkPresent
                 log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
 
-            else:
+            
+            elif checkPresent["result"] and len(checkPresent) == 0:
 
-                result = {"result":False, "data":"Pincode Already Present"}
+                result = {"result":False, "data":"Pincode not Present"}
 
 
 
@@ -182,7 +174,7 @@ class pincodes( uty ):
 
 
 
-    def create(self, pincode:str = None, status:int = 0):
+    def create(self, pincode:str = None, status:int = 0)-> dict:
 
         """
         Function for inserting pincodes and its status
@@ -200,8 +192,6 @@ class pincodes( uty ):
         result = {"result":False, "data":"please provide pincode"}
 
         if pincode != None:
-
-            result = {"result":False, "data":"Func201"}
 
             checkPresent = self.db.query("select (pincodes) from pincodes where pincodes = '{}'".format(pincode))
 
@@ -241,4 +231,4 @@ class pincodes( uty ):
 #print( pincodes().create(pincode="834003", status=1) )
 #print( pincodes().update(pincode="834003", status=0) )
 #print(pincodes().read(status=1))
-print(pincodes().delete(pincode="834003"))
+#print(pincodes().delete(pincode="834003"))
