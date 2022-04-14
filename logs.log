@@ -1,0 +1,27 @@
+INFO[db.py:__init__:15]:loggedIn
+ERROR[db.py:__query__:74]:queryError -> 'MySQLCursor' object has no attribute 'query'
+ERROR[db.py:__query__:74]:queryError -> 'MySQLCursor' object has no attribute 'query'
+ERROR[db.py:__query__:75]:queryError -> 'MySQLCursor' object has no attribute 'query'
+ERROR[db.py:__query__:75]:queryError -> 'MySQLCursor' object has no attribute 'query'
+ERROR[db.py:__query__:75]:queryError -> object of type 'MySQLCursor' has no len()
+ERROR[db.py:__query__:72]:queryError -> object of type 'MySQLCursor' has no len()
+ERROR[db.py:__query__:122]:queryError -> 1062 (23000): Duplicate entry '834001' for key 'pincodes.PRIMARY'
+ERROR[db.py:__query__:122]:queryError -> 1062 (23000): Duplicate entry '834001' for key 'pincodes.PRIMARY'
+ERROR[pincodes.py:create:33]:Hello
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1062 (23000): Duplicate entry '834001' for key 'pincodes.PRIMARY'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1062 (23000): Duplicate entry '834001' for key 'pincodes.PRIMARY'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1062 (23000): Duplicate entry '834001' for key 'pincodes.PRIMARY'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'field list'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'where clause'
+ERROR[pincodes.py:create:123]:{"funcError":list index out of range, additionalInfo: {"pincode":834002, "status":1}}
+ERROR[pincodes.py:create:123]:{"funcError":list index out of range, additionalInfo: {"pincode":834002, "status":1}}
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'pincode' in 'where clause'
+ERROR[db.py:__query__:122]:queryError -> 1054 (42S22): Unknown column 'status' in 'field list'
