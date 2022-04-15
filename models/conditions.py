@@ -32,11 +32,12 @@ class conditions( uty ):
 
             if not conditionDelte["result"]:
 
-                log.error(f'{{additionalInfo: {{"condition":{cond}}}}}')
+                log.error(f'{{Conditions_Delete_Error: {{"condition":{cond}}}}}')
 
             else:
 
                 conditionDelte["data"] = "Successful"
+                log.info(f'{{Conditions_Delete_Successful: {{"condition":{cond}}}}}')
 
             result = conditionDelte
 
@@ -75,11 +76,15 @@ class conditions( uty ):
 
                 if not updatecondition["result"]:
                     
-                    log.error(f'{{additionalInfo: {{"condition":{cond}, "listed":{listed}}}}}')
+                    log.error(f'{{Condition_Update_Error: {{"condition":{cond}, "listed":{listed}}}}}')
 
                 else:
 
                     updatecondition["data"] = "Successful"
+
+                    log.info(f'{{Condition_Update_Successful: {{"condition":{cond}, "listed":{listed}}}}}')
+
+                    
 
                 result = updatecondition
 
@@ -90,12 +95,13 @@ class conditions( uty ):
 
                 result = checkcondition
 
-                log.error(f'{{additionalInfo: {{"condition":{cond}, "listed":{listed}}}}}')
+                log.error(f'{{Condition_Update_Search_Error: {{"condition":{cond}, "listed":{listed}}}}}')
 
             
             elif checkcondition["result"] and len(checkcondition["data"]) == 0:
 
-                result = {"result":False, "data":"condition Not Present"}
+                result = {"result":False, "data":"Condition Not Present"}
+                log.warning(f'{{Condition_Not_Present: {{"condition":{cond}, "listed":{listed}}}}}')
 
 
 
@@ -189,7 +195,7 @@ class conditions( uty ):
 
         if cond != None:
 
-            conditionCheck = self.db.query("select (cond) from conditions where cond = '{}'".format(cond))
+            conditionCheck = self.read(cond=cond)
 
             if conditionCheck["result"] and len(conditionCheck["data"]) == 0:
 
@@ -198,6 +204,7 @@ class conditions( uty ):
                 if conditionAdd["result"]:
 
                     result = {"result":True, "data":"Successful"}
+                    log.info(f'{{Condition_Added_Successfully: {{"condition":{cond}, "listed":{listed}}}}}')
 
 
                 else:
@@ -209,12 +216,13 @@ class conditions( uty ):
 
                 result = conditionCheck
 
-                log.error(f'{{additionalInfo: {{"condition":{cond}, "listed":{listed}}}}}')
+                log.error(f'{{Condition_Query_Error: {{"condition":{cond}, "listed":{listed}}}}}')
 
 
             else:
 
                 result = {"result":False, "data":"condition Already Present"}
+                log.warning(f'{{Condition_Already_Present: {{"condition":{}, "listed":{listed}}}}}')
 
         
         return result

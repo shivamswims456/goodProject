@@ -63,3 +63,4 @@ ERROR[db.py:__query__:126]:queryError -> 1305 (42000): FUNCTION antalia.dict_key
 ERROR[db.py:__query__:126]:queryError -> 3141 (22032): Invalid JSON text in argument 1 to function json_contains: "Invalid value." at position 1.
 ERROR[db.py:__query__:126]:queryError -> 3141 (22032): Invalid JSON text in argument 1 to function json_contains: "Invalid value." at position 1.
 ERROR[db.py:__query__:126]:queryError -> 3141 (22032): Invalid JSON text in argument 1 to function json_contains: "Invalid value." at position 1.
+WARNING[pincodes.py:create:220]:{pincodeAlreadyPresent: {"pincode":834003, "status":1}}

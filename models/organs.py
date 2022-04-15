@@ -32,9 +32,11 @@ class organs( uty ):
 
             if not organDelte["result"]:
 
-                log.error(f'{{additionalInfo: {{"organ":{name}}}}}')
+                log.error(f'{{Organs_Delete_Error: {{"organ":{name}}}}}')
 
             else:
+
+                log.info(f'{{Organs_Delete_Successful: {{"organ":{name}}}}}')
 
                 organDelte["data"] = "Successful"
 
@@ -67,19 +69,21 @@ class organs( uty ):
 
         if name != None:
 
-            checkOrgan = self.db.query("select (name) from organs where name = '{}'".format(name))
+            checkOrgan = self.read(name=name)
 
             if checkOrgan["result"] and checkOrgan["data"] != 0:
 
                 updateOrgan = self.db.query("update organs set listed = {} where name = '{}'".format(listed, name))
 
-                if not updateOrgan["result"]:
-                    
-                    log.error(f'{{additionalInfo: {{"organ":{name}, "listed":{listed}}}}}')
-
-                else:
+                if updateOrgan["result"]:
 
                     updateOrgan["data"] = "Successful"
+                    
+                    log.info(f'{{Organs_Update_Successful: {{"organ":{name}, "listed":{listed}}}}}')
+
+                else:
+                    
+                    log.error(f'{{Organs_Update_Error: {{"organ":{name}, "listed":{listed}}}}}')
 
                 result = updateOrgan
 
@@ -90,12 +94,14 @@ class organs( uty ):
 
                 result = checkOrgan
 
-                log.error(f'{{additionalInfo: {{"organ":{name}, "listed":{listed}}}}}')
+                log.error(f'{{Organs_Update_Search_NotFound: {{"organ":{name}, "listed":{listed}}}}}')
 
             
             elif checkOrgan["result"] and len(checkOrgan["data"]) == 0:
 
                 result = {"result":False, "data":"Organ Not Present"}
+
+                log.info(f'{{Organs_Update_Notfound: {{"organ":{name}, "listed":{listed}}}}}')
 
 
 
@@ -145,9 +151,13 @@ class organs( uty ):
 
                 getOrgans = self.db.query("select (listed) from organs where name = '{}'".format(name))
 
-                if not getOrgans["result"]:
+                if getOrgans["result"]:
+
+                    log.info(f'{{Organs_Read_Organ_Successful: {{"organ":{name}, "listed":{listed}}}}}')
+
+                else:
                     
-                    log.error(f'{{additionalInfo: {{"organ":{name}, "listed":{listed}}}}}')
+                    log.info(f'{{Organs_Read_Organ_Error: {{"organ":{name}, "listed":{listed}}}}}')
 
                     
                 result = getOrgans
@@ -157,9 +167,13 @@ class organs( uty ):
 
                 getListed = self.db.query("select (name) from organs where listed = {}".format(listed))
 
-                if not getListed["result"]:
+                if getListed["result"]:
 
-                    log.error(f'{{additionalInfo: {{"organ":{name}, "listed":{listed}}}}}')
+                    log.info(f'{{Organs_Read_Listed_Successful: {{"organ":{name}, "listed":{listed}}}}}')
+
+                else:
+
+                    log.error(f'{{Organs_Read_Listed_Error: {{"organ":{name}, "listed":{listed}}}}}')
 
                 result = getListed
 
@@ -189,7 +203,7 @@ class organs( uty ):
 
         if name != None:
 
-            organCheck = self.db.query("select (name) from organs where name = '{}'".format(name))
+            organCheck = self.read(name = name)
 
             if organCheck["result"] and len(organCheck["data"]) == 0:
 
@@ -198,23 +212,25 @@ class organs( uty ):
                 if organAdd["result"]:
 
                     result = {"result":True, "data":"Successful"}
+                    log.info(f'{{Organ_Created: {{"organ":{name}, "listed":{listed}}}}}')
 
 
                 else:
 
                     result = organAdd
+                    log.error(f'{{Organ_Create_Error: {{"organ":{name}, "listed":{listed}}}}}')
 
 
             elif organCheck["result"] == False:
 
                 result = organCheck
-
-                log.error(f'{{additionalInfo: {{"organ":{name}, "listed":{listed}}}}}')
+                log.error(f'{{Organ_Create_Search_Error: {{"organ":{name}, "listed":{listed}}}}}')
 
 
             else:
 
                 result = {"result":False, "data":"Organ Already Present"}
+                log.warning(f'{{Organ_Already_Present: {{"organ":{name}, "listed":{listed}}}}}')
 
         
         return result

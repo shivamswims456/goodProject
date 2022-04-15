@@ -34,11 +34,12 @@ class pincodes( uty ):
             if delPin["result"]:
 
                 result = {"result":True, "data":"Successful"}
+                log.info(f'{{Pincodes_Delete_Successful: {{"pincode":{pincode}}}}}')
 
             else:
 
                 result = delPin
-                log.error(f'{{additionalInfo: {{"pincode":{pincode}}}}}')
+                log.error(f'{{Pincodes_Delete_Fail: {{"pincode":{pincode}}}}}')
 
 
         return result
@@ -87,9 +88,13 @@ class pincodes( uty ):
 
                 statusQuery = self.db.query("select (listed) from pincodes where pincodes = '{}'".format(pincode))
                 
-                if not statusQuery["result"]:
+                if statusQuery["result"]:
 
-                    log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                    log.info(f'{{Pincode_Read_Listed_Successful: {statusQuery}')
+
+                else:
+
+                    log.error(f'{{Pincode_Read_Listed_Error: {{"pincode":{pincode}, "status":{status}}}}}')
 
                 
                 result = statusQuery
@@ -100,9 +105,13 @@ class pincodes( uty ):
 
                 pinQuery = self.db.query("select (pincodes) from pincodes where listed = {}".format(status))
 
-                if not pinQuery["result"]:
+                if pinQuery["result"]:
 
-                    log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                    log.info(f'{{Pincode_Read_Pincodes_Successful: {statusQuery}')
+
+                else:
+
+                    log.error(f'{{Pincode_Read_Pincodes_Error: {{"pincode":{pincode}, "status":{status}}}}}')
 
                 result = pinQuery
 
@@ -148,23 +157,25 @@ class pincodes( uty ):
                 if queryResult["result"]:
 
                     result = {"result":True, "data":"Successful"}
+                    log.info(f'{{Pincode_Successful_Update: {{"pincode":{pincode}, "status":{status}}}}}')
 
                 else:
 
 
                     result = queryResult
-                    log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                    log.error(f'{{Pincode_Update_Error: {{"pincode":{pincode}, "status":{status}}}}}')
 
 
             elif checkPresent["result"] == False:
 
                 result = checkPresent
-                log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                log.error(f'{{Pincode_Update_Search_Error: {{"pincode":{pincode}, "status":{status}}}}}')
 
             
             elif checkPresent["result"] and len(checkPresent) == 0:
 
                 result = {"result":False, "data":"Pincode not Present"}
+                log.warning(f'{{Pincode_Not_Present: {{"pincode":{pincode}, "status":{status}}}}}')
 
 
 
@@ -193,7 +204,7 @@ class pincodes( uty ):
 
         if pincode != None:
 
-            checkPresent = self.db.query("select (pincodes) from pincodes where pincodes = '{}'".format(pincode))
+            checkPresent = self.read(pincode=pincode)
 
             if checkPresent["result"] and len(checkPresent["data"]) == 0:
                     
@@ -202,21 +213,25 @@ class pincodes( uty ):
                 if queryResult["result"]:
 
                     result = {"result":True, "data":"Successful"}
+                    log.info(f'{{Pincode_Successful_Insert: {{"pincode":{pincode}, "status":{status}}}}}')
 
                 else:
 
                     result = queryResult
-                    log.error(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                    log.error(f'{{Pincode_Insert_Error: {{"pincode":{pincode}, "status":{status}}}}}')
 
+            
             elif checkPresent["result"] == False:
 
                 result = checkPresent
-                log.warning(f'{{additionalInfo: {{"pincode":{pincode}, "status":{status}}}}}')
+                log.error(f'{{Pincode_Create_Search_Error: {{"pincode":{pincode}, "status":{status}}}}}')
+
                 
 
             else:
 
                 result = {"result":False, "data":"Pincode Already Present"}
+                log.warning(f'{{Pincode_Already_Present: {{"pincode":{pincode}, "status":{status}}}}}')
 
 
 
@@ -229,7 +244,7 @@ class pincodes( uty ):
 
         
 
-#print( pincodes().create(pincode="834003", status=1) )
+#print( pincodes().create(pincode="834004", status=1) )
 #print( pincodes().update(pincode="834003", status=0) )
 #print(pincodes().read(status=1))
 #print(pincodes().delete(pincode="834003"))
