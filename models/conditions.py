@@ -222,7 +222,7 @@ class conditions( uty ):
             else:
 
                 result = {"result":False, "data":"condition Already Present"}
-                log.warning(f'{{Condition_Already_Present: {{"condition":{}, "listed":{listed}}}}}')
+                log.warning(f'{{Condition_Already_Present: {{"condition":{cond}, "listed":{listed}}}}}')
 
         
         return result
