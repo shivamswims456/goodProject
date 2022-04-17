@@ -1,4 +1,3 @@
-from turtle import update
 import base
 from uty import uty 
 from cultures import cultures
@@ -83,9 +82,9 @@ class packages( uty ):
 
             result = {"result":False, "data":"Please Provide Id"}
 
-            cultureCheck = self.read(id = id)
+            packageCheck = self.read(id = id)
 
-            if cultureCheck["result"] and len(cultureCheck["data"]) != 0:
+            if packageCheck["result"] and len(packageCheck["data"]) != 0:
 
 
                 for pin in pincodesAvailable:
@@ -150,9 +149,9 @@ class packages( uty ):
                 
                 result = updateQuery
 
-            elif cultureCheck["result"] == False:
+            elif packageCheck["result"] == False:
 
-                result = cultureCheck
+                result = packageCheck
 
                 log.error(f'{{Packages_Update_Query_Error:  {{name:{str(name)}, deliveryTime:{str(deliveryTime)}, cultures:{str(cultures)}, assoicatedNames:{str(assoicatedNames)}, numberOfParameters:{str(numberOfParameters)}, preTest:{str(preTest)}, price:{str(price)}, discountPrice:{str(discountPrice)}, pincodesAvailable:{str(pincodesAvailable)}, organs:{str(organs)}, conditions:{str(conditions)}, listed:{str(listed)}, homePage:{str(homePage)}}}}}')
 
