@@ -1,15 +1,20 @@
-INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': []}
-INFO[pincodes.py:create:216]:{Pincode_Successful_Insert: {"pincode":834001, "status":0}}
-INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': []}
-INFO[pincodes.py:create:216]:{Pincode_Successful_Insert: {"pincode":834002, "status":0}}
-INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': []}
-INFO[pincodes.py:create:216]:{Pincode_Successful_Insert: {"pincode":834003, "status":0}}
-INFO[conditions.py:create:207]:{Condition_Added_Successfully: {"condition":Dibetise, "listed":0}}
-INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":kidney, "listed":None}}
-INFO[organs.py:create:215]:{Organ_Created: {"organ":kidney, "listed":0}}
-INFO[cultures.py:create:318]:{Cultures_Create_Successful:  {name:K.F.T, deliveryTime:1 Day, components:["CBC", "RBC"], assoicatedNames:["Kidney Function Test"], numberOfParameters:2, preTest:Empty Stomach, price:800, discountPrice:200, pincodesAvailable:["834001", "834002", "834003"], organs:["kidney"], conditions:["Dibetise"], listed:1, homePage:0}}
-ERROR[db.py:__query__:126]:queryError -> 1054 (42S22): Unknown column 'id' in 'where clause'
-ERROR[cultures.py:delete:46]:{Cultures_Delete_Error:{id:1}}
-ERROR[db.py:__query__:126]:queryError -> 1054 (42S22): Unknown column 'id' in 'where clause'
-ERROR[cultures.py:delete:46]:{Cultures_Delete_Error:{id:1}}
-INFO[cultures.py:delete:41]:{Cultures_Delete_Successful:{id:1}}
+INFO[packages.py:read:226]:{Packages_Read_Successful:  {'result': True, 'data': [['Package1', '1_Day', [2], ['Package_test'], 2, '["Empty Stomach"]', 300.0, 150.0, ['834001', '834002'], ['Heart'], ['Heart Failures'], 1, 1, 1]]}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
+WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Heart Failures, "listed":0}}
+INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":Heart, "listed":None}}
+WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":Heart, "listed":0}}
+INFO[packages.py:update:116]:{Packages_Update_Successful:  {'result': True, 'data': {...}}}
+INFO[packages.py:read:226]:{Packages_Read_Successful:  {'result': True, 'data': [['Package_1', '1_Day', [2], ['Package_test'], 1, '["Empty Stomach"]', 300.0, 150.0, ['834001', '834002'], ['Heart'], ['Heart Failures'], 1, 1, 1]]}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
+WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Heart Failures, "listed":0}}
+INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":Heart, "listed":None}}
+WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":Heart, "listed":0}}
+INFO[packages.py:update:116]:{Packages_Update_Successful:  {'result': True, 'data': 'Successful'}}
+INFO[packages.py:read:252]:{Packages_Read_Successful:  {'result': True, 'data': [['Package_1', '1_Day', [2], ['Package_test'], 1, '["Empty Stomach"]', 300.0, 150.0, ['834001', '834002'], ['Heart'], ['Heart Failures'], 1, 1, 1]]}}
+INFO[packages.py:delete:36]:{Packages_Delete_Successful:{id:1}}

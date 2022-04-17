@@ -14,14 +14,14 @@ class db( object ):
         load_dotenv()
         
         try:
-            
+
             self.cnx = connector.connect(user=os.getenv('dbUser'), password=os.getenv('dbPassword'), host=os.getenv("dbHost"), database=os.getenv("dbBase"))
+            
 
         except Exception as e:
 
+            log.error(f'{{db_Connect_Error: {{"reason":{str(e)}}}}}')
 
-
-            log.error(f"loggingError -> {str(e)}")
 
 
 
@@ -78,7 +78,6 @@ class db( object ):
 
         except Exception as e:
 
-            print(e)
 
             log.error(f'funcError -> {str(e)}, additionalInfo -> {"query":{str(query)}}')
 
@@ -104,12 +103,17 @@ class db( object ):
 
         result = {"result":False, "data":"Func101"}
 
+
+
         try:
+
 
             cursor = self.cnx.cursor()
 
 
             try:
+
+                
                 
                 cursor.execute(query)
 

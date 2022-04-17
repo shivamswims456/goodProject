@@ -1,4 +1,3 @@
-from requests import delete
 import base, logging as log, json
 from uty import uty
 from pincodes import pincodes
@@ -13,9 +12,7 @@ class cultures( uty ):
         uty.__init__(self)
 
         self.db = self.db()
-
         self.pin = pincodes()
-
         self.cod = conditions()
         self.org = organs()
 
@@ -42,7 +39,7 @@ class cultures( uty ):
 
 
         else:
-
+            
             log.error(f'{{Cultures_Delete_Error:{{id:{id}}}}}')
 
         
@@ -61,22 +58,21 @@ class cultures( uty ):
 
             Parameters:
                 *id(int)            :id of Culture
-                name(str)          :Name of the test
-                deliveryTime(str)  :Time it would require to get Delivered
-                price(float)       :cost of test
-                discount(float)    :discount given of test
-                pincodesAvailable(list) :list of pincodes for which the services are available
-                numberOfParameters :total numner of parametrs under test
+                *name(str)          :Name of the test
+                *deliveryTime(str)  :Time it would require to get Delivered
+                *price(float)       :cost of test
+                *discount(float)    :discount given of test
+                *pincodesAvailable(list) :list of pincodes for which the services are available
+                *numberOfParameters :total numner of parametrs under test
 
-                components(list)   :list of components included in tests
-                preTest(str)       :this is a description of what you should be like before test
-                organs(list)       :list of organs related to tests
-                conditions(list)   :list of disease or conditions for which test is required
-                listed(int)        :is this test listed for indenpent booking - default 1
-                homePage(int)      :will this test show on homePage - default 0
-                associatedNames(list)   :list of names that resonate with the tests
+                *components(list)   :list of components included in tests
+                *preTest(str)       :this is a description of what you should be like before test
+                *organs(list)       :list of organs related to tests
+                *conditions(list)   :list of disease or conditions for which test is required
+                *listed(int)        :is this test listed for indenpent booking - default 1
+                *homePage(int)      :will this test show on homePage - default 0
+                *associatedNames(list)   :list of names that resonate with the tests
                 
-
             Results:
                 result(dict):      {"result":True/False, "data":"Successful/Error Code"}
 
@@ -133,24 +129,35 @@ class cultures( uty ):
 
                 updateQuery = self.updateQuery(parameters=parameters, table="cultures") + " where id = {}".format(id)
 
+                updateQuery = self.db.query(updateQuery)
+
                 if updateQuery["result"]:
 
-                    result = updateQuery
+                    updateQuery["data"] = "Successful"
+
                     log.info(f'{{Cultures_Update_Successful:  {updateQuery}}}')
 
                 else:
 
                     log.error(f'{{Cultures_Update_Query_Error: {{name:{str(name)}, deliveryTime:{str(deliveryTime)}, components:{str(components)}, assoicatedNames:{str(assoicatedNames)}, numberOfParameters:{str(numberOfParameters)}, preTest:{str(preTest)}, price:{str(price)}, discountPrice:{str(discountPrice)}, pincodesAvailable:{str(pincodesAvailable)}, organs:{str(organs)}, conditions:{str(conditions)}, listed:{str(listed)}, homePage:{str(homePage)}}}}}')
 
+                
+                result = updateQuery
+
             elif cultureCheck["result"] == False:
 
                 result = cultureCheck
+                print(result)
 
                 log.error(f'{{Cultures_Update_Query_Error:  {{name:{str(name)}, deliveryTime:{str(deliveryTime)}, components:{str(components)}, assoicatedNames:{str(assoicatedNames)}, numberOfParameters:{str(numberOfParameters)}, preTest:{str(preTest)}, price:{str(price)}, discountPrice:{str(discountPrice)}, pincodesAvailable:{str(pincodesAvailable)}, organs:{str(organs)}, conditions:{str(conditions)}, listed:{str(listed)}, homePage:{str(homePage)}}}}}')
 
             else:
 
+                result = {"result":False, "data":"Culture Not Present"}
+
                 log.warning(f'{{Cultures_Update_Not_Presnt:  {{name:{str(name)}, deliveryTime:{str(deliveryTime)}, components:{str(components)}, assoicatedNames:{str(assoicatedNames)}, numberOfParameters:{str(numberOfParameters)}, preTest:{str(preTest)}, price:{str(price)}, discountPrice:{str(discountPrice)}, pincodesAvailable:{str(pincodesAvailable)}, organs:{str(organs)}, conditions:{str(conditions)}, listed:{str(listed)}, homePage:{str(homePage)}}}}}')
+        
+        
         
         except Exception as e:
 
@@ -196,6 +203,8 @@ class cultures( uty ):
 
         """
 
+        result = {"result":False, "data":"Cultures - 102"}
+
         try:
 
     
@@ -223,16 +232,30 @@ class cultures( uty ):
 
             if queryResult["result"]:
 
-                result = queryResult
+                #converting json to dataType
+
+                for index, each in enumerate(queryResult["data"]):
+
+                    queryResult["data"][index][2] = json.loads(queryResult["data"][index][2])
+                    queryResult["data"][index][3] = json.loads(queryResult["data"][index][3])
+                    queryResult["data"][index][8] = json.loads(queryResult["data"][index][8])
+                    queryResult["data"][index][9] = json.loads(queryResult["data"][index][9])
+                    queryResult["data"][index][10] = json.loads(queryResult["data"][index][10])
+                    
+
                 log.info(f'{{Cultures_Read_Successful:  {queryResult}}}')
 
             else:
 
                 log.error(f'{{Cultures_Create_Query_Error:  {{name:{str(name)}, deliveryTime:{str(deliveryTime)}, components:{str(components)}, assoicatedNames:{str(assoicatedNames)}, numberOfParameters:{str(numberOfParameters)}, preTest:{str(preTest)}, price:{str(price)}, discountPrice:{str(discountPrice)}, pincodesAvailable:{str(pincodesAvailable)}, organs:{str(organs)}, conditions:{str(conditions)}, listed:{str(listed)}, homePage:{str(homePage)}}}}}')
 
+            
+            result = queryResult
+
 
         except Exception as e:
 
+            
             log.error(f'{{Cultures_Function_Error_101:  {{name:{str(name)}, deliveryTime:{str(deliveryTime)}, components:{str(components)}, assoicatedNames:{str(assoicatedNames)}, numberOfParameters:{str(numberOfParameters)}, preTest:{str(preTest)}, price:{str(price)}, discountPrice:{str(discountPrice)}, pincodesAvailable:{str(pincodesAvailable)}, organs:{str(organs)}, conditions:{str(conditions)}, listed:{str(listed)}, homePage:{str(homePage)}}}}}')
 
 
@@ -319,7 +342,10 @@ class cultures( uty ):
 
             else:
 
+
                 log.error(f'{{Cultures_Query_Error:  {{name:{str(name)}, deliveryTime:{str(deliveryTime)}, components:{str(components)}, assoicatedNames:{str(assoicatedNames)}, numberOfParameters:{str(numberOfParameters)}, preTest:{str(preTest)}, price:{str(price)}, discountPrice:{str(discountPrice)}, pincodesAvailable:{str(pincodesAvailable)}, organs:{str(organs)}, conditions:{str(conditions)}, listed:{str(listed)}, homePage:{str(homePage)}}}}}')
+
+            result = cultureCreate
 
 
         except Exception as e:
@@ -341,19 +367,18 @@ cultures().create( name="K.F.T", deliveryTime="1 Day", discountPrice=200, price 
                homePage = 0
 )        
 
-"""
-"""
-cultures().update(id=1, name="K.F.T", deliveryTime="1 Day", discountPrice=200, price = 800, pincodesAvailable = ["834001", "834002", "834003"], organs = ["kidney"],\
+print(cultures().update(id=2, name="K.F.T_1", deliveryTime="1 Day", discountPrice=200, price = 800, pincodesAvailable = ["834001", "834002", "834003"], organs = ["kidney"],\
                 assoicatedNames = ["Kidney Function Test"], preTest="Empty Stomach",\
                components=["CBC", "RBC"], conditions=["Dibetise"], listed = 1,\
                homePage = 0
-)
-
+))
 
 """
-#cultures().read(name="K.F.T", pincodesAvailable=["834001"])
 
-print(cultures().delete(id=1))
+
+#print(cultures().read(name="K.F.T", pincodesAvailable=["834001"]))
+
+#print(cultures().delete(id=1))
 
 
 

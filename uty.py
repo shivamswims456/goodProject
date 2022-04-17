@@ -71,13 +71,23 @@ class uty( object ):
         cols = str(tuple(parameters.keys())).replace("'", "").replace("(", "").replace(")", "")
 
         
-        searchQuery = f"select {cols} from cultures where "
+        searchQuery = f"select {cols} from {table} where "
 
         for name, parameter in parameters.items():
 
             if parameter != None:
 
-                if type(parameter) == list and len(parameter) != 0:
+                if type(parameter) == tuple and len(parameter) != 0:
+
+                    if len(parameter) == 1:
+
+                        parameter = str(parameter).replace(",", "")
+
+                    searchQuery += """{} in {}""".format(name, parameter)
+                    searchQuery += " and "
+
+
+                elif type(parameter) == list and len(parameter) != 0:
 
                     parameter = json.dumps(parameter)
 
