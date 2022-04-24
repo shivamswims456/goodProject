@@ -54,7 +54,7 @@ class db( object ):
         return result
 
 
-    def query(self, query:str):
+    def query(self, query:str) -> dict:
 
         """
         High class function for getting result of a query
@@ -79,7 +79,7 @@ class db( object ):
         except Exception as e:
 
 
-            log.error(f'funcError -> {str(e)}, additionalInfo -> {"query":{str(query)}}')
+            log.error(f'{{"db_query_failed":{query}, "error":{e}}}')
 
 
         return result

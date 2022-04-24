@@ -1,45 +1,16 @@
-INFO[packages.py:read:226]:{Packages_Read_Successful:  {'result': True, 'data': [['Package1', '1_Day', [2], ['Package_test'], 2, '["Empty Stomach"]', 300.0, 150.0, ['834001', '834002'], ['Heart'], ['Heart Failures'], 1, 1, 1]]}}
-INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
-WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
-INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
-WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
-WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Heart Failures, "listed":0}}
-INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":Heart, "listed":None}}
-WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":Heart, "listed":0}}
-INFO[packages.py:update:116]:{Packages_Update_Successful:  {'result': True, 'data': {...}}}
-INFO[packages.py:read:226]:{Packages_Read_Successful:  {'result': True, 'data': [['Package_1', '1_Day', [2], ['Package_test'], 1, '["Empty Stomach"]', 300.0, 150.0, ['834001', '834002'], ['Heart'], ['Heart Failures'], 1, 1, 1]]}}
-INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
-WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
-INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
-WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
-WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Heart Failures, "listed":0}}
-INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":Heart, "listed":None}}
-WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":Heart, "listed":0}}
-INFO[packages.py:update:116]:{Packages_Update_Successful:  {'result': True, 'data': 'Successful'}}
-INFO[packages.py:read:252]:{Packages_Read_Successful:  {'result': True, 'data': [['Package_1', '1_Day', [2], ['Package_test'], 1, '["Empty Stomach"]', 300.0, 150.0, ['834001', '834002'], ['Heart'], ['Heart Failures'], 1, 1, 1]]}}
-INFO[packages.py:delete:36]:{Packages_Delete_Successful:{id:1}}
-INFO[custQueries.py:create:35]:{"custQueries_Query_Create_Error":{custName:shivam, custEmail:shivamswims456@gmail.com, phoneNumber:9693432136, particularName:K.F.T_1, particularId:1, particularSec:1, payment:C.O.D, status:INTIALIZED, reportLink:}}
-INFO[custQueries.py:create:35]:{"custQueries_Query_Create_Error":{custName:shivam, custEmail:shivamswims456@gmail.com, phoneNumber:9693432136, particularName:K.F.T_1, particularId:1, particularSec:1, payment:C.O.D, status:INTIALIZED, reportLink:}}
-ERROR[db.py:__query__:130]:queryError -> 1054 (42S22): Unknown column 'custName' in 'field list'
-ERROR[custQueries.py:read:67]:{"custQueries_Read_Error":{id:1, bookedTime:None, custName:None, custEmail:None, phoneNumber:None, particularName:None, particularId:None, particularSec:None, payment:None, status:None, reportLink:None}}
-ERROR[db.py:__query__:130]:queryError -> 1054 (42S22): Unknown column 'custName' in 'field list'
-ERROR[custQueries.py:read:66]:{"custQueries_Read_Error":{id:1, bookedTime:None, custName:None, custEmail:None, phoneNumber:None, particularName:None, particularId:None, particularSec:None, payment:None, status:None, reportLink:None}}
-ERROR[db.py:__query__:130]:queryError -> 1054 (42S22): Unknown column 'custName' in 'field list'
-ERROR[custQueries.py:read:66]:{"custQueries_Read_Error":{id:1, bookedTime:None, custName:None, custEmail:None, phoneNumber:None, particularName:None, particularId:None, particularSec:None, payment:None, status:None, reportLink:None}}
-ERROR[db.py:__query__:130]:queryError -> 1054 (42S22): Unknown column 'custName' in 'field list'
-ERROR[custQueries.py:read:68]:{"custQueries_Read_Error":{id:1, bookedTime:None, custName:None, custEmail:None, phoneNumber:None, particularName:None, particularId:None, particularSec:None, payment:None, status:None, reportLink:None}}
-INFO[custQueries.py:read:64]:{custQueries_Read_Successful:  {'result': True, 'data': [[1, 'shivam', 'shivamswims456@gmail.com', '9693432136', 'K.F.T_1', 1.0, 1.0, 'C.O.D', 'INTIALIZED', '', datetime.datetime(2022, 4, 17, 15, 12, 38)]]}}
-ERROR[db.py:__query__:130]:queryError -> Use multi=True when executing multiple statements
-ERROR[custQueries.py:read:88]:{"custQueries_Function_Error_102":{id:1, bookedTime:None, custName:None, custEmail:None, phoneNumber:None, particularName:None, particularId:None, particularSec:None, payment:None, status:None, reportLink:None}}
-ERROR[db.py:__query__:130]:queryError -> 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by bookedTime DESC' at line 1
-ERROR[custQueries.py:read:79]:{"custQueries_Read_Error":{id:1, bookedTime:None, custName:None, custEmail:None, phoneNumber:None, particularName:None, particularId:None, particularSec:None, payment:None, status:None, reportLink:None}}
-INFO[custQueries.py:read:75]:{custQueries_Read_Successful:  {'result': True, 'data': [[1, 'shivam', 'shivamswims456@gmail.com', '9693432136', 'K.F.T_1', 1.0, 1.0, 'C.O.D', 'INTIALIZED', '', datetime.datetime(2022, 4, 17, 15, 12, 38)]]}}
-INFO[custQueries.py:read:77]:{custQueries_Read_Successful:  {'result': True, 'data': [[1, 'shivam', 'shivamswims456@gmail.com', '9693432136', 'K.F.T_1', 1.0, 1.0, 'C.O.D', 'INTIALIZED', '', datetime.datetime(2022, 4, 17, 15, 12, 38)]]}}
-INFO[custQueries.py:create:215]:{"custQueries_Create_Error":{custName:shivam1, custEmail:shivamswims456@gmail.com, phoneNumber:9693432136, particularName:K.F.T_1, particularId:1, particularSec:1, payment:C.O.D, status:INTIALIZED, reportLink:}}
-INFO[custQueries.py:read:158]:{custQueries_Read_Successful:  {'result': True, 'data': [[1, 'shivam', 'shivamswims456@gmail.com', '9693432136', 'K.F.T_1', 1.0, 1.0, 'C.O.D', 'INTIALIZED', '', datetime.datetime(2022, 4, 17, 15, 12, 38)]]}}
-INFO[custQueries.py:read:158]:{custQueries_Read_Successful:  {'result': True, 'data': [[1, 'shivam', 'shivamswims456@gmail.com', '9693432136', 'K.F.T_1', 1.0, 1.0, 'C.O.D', 'INTIALIZED', '', datetime.datetime(2022, 4, 17, 15, 12, 38)]]}}
-INFO[custQueries.py:update:70]:{custQuery_Successful:  {'result': True, 'data': 'Successful'}}
-INFO[custQueries.py:read:158]:{custQueries_Read_Successful:  {'result': True, 'data': [[1, 'shivam1', 'shivamswims456@gmail.com', '9693432136', 'K.F.T_1', 1.0, 1.0, 'C.O.D', 'INTIALIZED', '', datetime.datetime(2022, 4, 17, 15, 12, 38)]]}}
-INFO[custQueries.py:read:190]:{custQueries_Read_Successful:  {'result': True, 'data': [[1, 'shivam1', 'shivamswims456@gmail.com', '9693432136', 'K.F.T_1', 1.0, 1.0, 'C.O.D', 'INTIALIZED', '', datetime.datetime(2022, 4, 17, 15, 12, 38)]]}}
-INFO[custQueries.py:delete:34]:{Query_Delete_Successful:{id:1}}
-INFO[custQueries.py:read:190]:{custQueries_Read_Successful:  {'result': True, 'data': []}}
+ERROR[db.py:__init__:23]:{db_Connect_Error: {"reason":1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)}}
+ERROR[db.py:query:82]:{"db_query_failed":select userName, password, attempts, lastAttempt, reset from users where userName = 'shivam', "error":Invalid format specifier}
+ERROR[login.py:getUsers:313]:{"login_getUser_Failed":{"userName":shivam}}
+ERROR[login.py:matchPassword:285]:{"login_matchPassword_Failed":{"userName":shivam}}
+ERROR[db.py:__init__:23]:{db_Connect_Error: {"reason":1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)}}
+ERROR[db.py:query:82]:{"db_query_failed":select userName, password, attempts, lastAttempt, reset from users where userName = 'shivam', "error":Invalid format specifier}
+ERROR[login.py:getUsers:315]:{"login_getUser_Failed":{"userName":shivam}}
+ERROR[login.py:matchPassword:287]:{"login_matchPassword_funcFailed":{"userName":shivam}}
+ERROR[db.py:__init__:23]:{db_Connect_Error: {"reason":1045 (28000): Access denied for user 'shivam'@'localhost' (using password: YES)}}
+ERROR[db.py:query:82]:{"db_query_failed":select userName, password, attempts, lastAttempt, reset from users where userName = 'shivam', "error":Invalid format specifier}
+ERROR[login.py:getUsers:315]:{"login_getUser_Failed":{"userName":shivam}}
+ERROR[login.py:matchPassword:287]:{"login_matchPassword_funcFailed":{"userName":shivam}}
+INFO[login.py:getUsers:309]:{"login_getUser_Successful":{"userName":shivam}}
+ERROR[login.py:matchPassword:244]:{"login_matchPassword_passwordFailed":{"userName":shivam}}
+INFO[login.py:getUsers:309]:{"login_getUser_Successful":{"userName":shivam}}
+ERROR[login.py:matchPassword:238]:{"login_matchPassword_Successful":{"userName":shivam}}
