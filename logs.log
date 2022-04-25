@@ -14,3 +14,60 @@ INFO[login.py:getUsers:309]:{"login_getUser_Successful":{"userName":shivam}}
 ERROR[login.py:matchPassword:244]:{"login_matchPassword_passwordFailed":{"userName":shivam}}
 INFO[login.py:getUsers:309]:{"login_getUser_Successful":{"userName":shivam}}
 ERROR[login.py:matchPassword:238]:{"login_matchPassword_Successful":{"userName":shivam}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834003, "status":0}}
+WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Dibetise, "listed":0}}
+INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":kidney, "listed":None}}
+WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":kidney, "listed":0}}
+ERROR[db.py:__query__:130]:queryError -> 1136 (21S01): Column count doesn't match value count at row 1
+ERROR[cultures.py:create:351]:{Cultures_Query_Error:  {name:K.F.T, deliveryTime:1 Day, components:["CBC", "RBC"], assoicatedNames:["Kidney Function Test"], numberOfParameters:2, preTest:Empty Stomach, price:800, discountPrice:200, pincodesAvailable:["834001", "834002", "834003"], organs:["kidney"], conditions:["Dibetise"], listed:1, homePage:0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834003, "status":0}}
+WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Dibetise, "listed":0}}
+INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":kidney, "listed":None}}
+WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":kidney, "listed":0}}
+ERROR[db.py:__query__:130]:queryError -> 1136 (21S01): Column count doesn't match value count at row 1
+ERROR[cultures.py:create:351]:{Cultures_Query_Error:  {name:K.F.T, deliveryTime:1 Day, components:["CBC", "RBC"], assoicatedNames:["Kidney Function Test"], numberOfParameters:2, preTest:Empty Stomach, price:800, discountPrice:200, pincodesAvailable:["834001", "834002", "834003"], organs:["kidney"], conditions:["Dibetise"], listed:1, homePage:0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834003, "status":0}}
+WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Dibetise, "listed":0}}
+INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":kidney, "listed":None}}
+WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":kidney, "listed":0}}
+ERROR[db.py:__query__:130]:queryError -> 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', 1day, hemotology)' at line 1
+ERROR[cultures.py:create:351]:{Cultures_Query_Error:  {name:K.F.T, deliveryTime:1 Day, components:["CBC", "RBC"], assoicatedNames:["Kidney Function Test"], numberOfParameters:2, preTest:Empty Stomach, price:800, discountPrice:200, pincodesAvailable:["834001", "834002", "834003"], organs:["kidney"], conditions:["Dibetise"], listed:1, homePage:0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834003, "status":0}}
+WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Dibetise, "listed":0}}
+INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":kidney, "listed":None}}
+WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":kidney, "listed":0}}
+INFO[cultures.py:create:346]:{Cultures_Create_Successful:  {name:K.F.T, deliveryTime:1 Day, components:["CBC", "RBC"], assoicatedNames:["Kidney Function Test"], numberOfParameters:2, preTest:Empty Stomach, price:800, discountPrice:200, pincodesAvailable:["834001", "834002", "834003"], organs:["kidney"], conditions:["Dibetise"], listed:1, homePage:0}}
+INFO[cultures.py:read:255]:{Cultures_Read_Successful:  {'result': True, 'data': []}}
+INFO[cultures.py:read:255]:{Cultures_Read_Successful:  {'result': True, 'data': []}}
+INFO[cultures.py:read:255]:{Cultures_Read_Successful:  {'result': True, 'data': [['K.F.T', '1 Day', ['CBC', 'RBC'], ['Kidney Function Test'], 2, 'Empty Stomach', 800.0, 200.0, ['834001', '834002', '834003'], ['kidney'], ['Dibetise'], 1, 0, 'blood', '', '1day', 'hemotology', 3]]}}
+INFO[cultures.py:read:260]:{Cultures_Read_Successful:  {'result': True, 'data': [['K.F.T', '1 Day', ['CBC', 'RBC'], ['Kidney Function Test'], 2, 'Empty Stomach', 800.0, 200.0, ['834001', '834002', '834003'], ['kidney'], ['Dibetise'], 1, 0, 'blood', '', '1day', 'hemotology', 3]]}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834001, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834002, "status":0}}
+INFO[pincodes.py:read:93]:{Pincode_Read_Listed_Successful: {'result': True, 'data': [0]}
+WARNING[pincodes.py:create:234]:{Pincode_Already_Present: {"pincode":834003, "status":0}}
+WARNING[conditions.py:create:225]:{Condition_Already_Present: {"condition":Dibetise, "listed":0}}
+INFO[organs.py:read:156]:{Organs_Read_Organ_Successful: {"organ":kidney, "listed":None}}
+WARNING[organs.py:create:233]:{Organ_Already_Present: {"organ":kidney, "listed":0}}
+INFO[cultures.py:update:143]:{Cultures_Update_Successful:  {'result': True, 'data': 'Successful'}}

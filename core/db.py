@@ -71,6 +71,8 @@ class db( object ):
 
         try:
 
+            print(query)
+
             result = self.__query__(query)
 
             self.cnx.commit()

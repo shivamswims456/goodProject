@@ -49,7 +49,8 @@ class cultures( uty ):
 
     def update(self, id:int, name:str = None, deliveryTime:str = None, discountPrice:list = None, price:float = None,\
                 pincodesAvailable:list = None, organs:list = [], assoicatedNames:list = [], numberOfParameters = None,\
-                components:list = [], conditions:list = [], listed:int = None, homePage:int = None, preTest:str = None) -> dict:
+                components:list = [], conditions:list = [], listed:int = None, homePage:int = None, preTest:str = None,\
+                specimen = None, technique = None, runTime = None, section = None) -> dict:
 
 
         """
@@ -124,6 +125,10 @@ class cultures( uty ):
                             "conditions":conditions,
                             "listed":listed,
                             "homePage":homePage,
+                            "specimen":specimen,
+                            "technique":technique,
+                            "runTime":runTime,
+                            "section":section,
                             "id":id}
 
 
@@ -171,7 +176,8 @@ class cultures( uty ):
 
     def read(self, id:int=None, name:str = None, deliveryTime:str = None, discountPrice:list = None, price:float = None,\
              pincodesAvailable:list = None, organs:list = [], assoicatedNames:list = [], numberOfParameters = None,\
-             components:list = [], conditions:list = [], listed:int = None, homePage:int = None, preTest:str = None) -> dict:
+             components:list = [], conditions:list = [], listed:int = None, homePage:int = None, preTest:str = None,\
+             specimen:str = None, technique:str = None, runTime:str = None, section:str = None) -> dict:
 
 
 
@@ -194,6 +200,10 @@ class cultures( uty ):
                 listed(int)        :is this test listed for indenpent booking - default 1
                 homePage(int)      :will this test show on homePage - default 0
                 associatedNames(list)   :list of names that resonate with the tests
+                specimen(str)      :type of sample collected 
+                technique(str)     :technique used in sample analysis
+                runTime            :time taken to analyse sample
+                section            :section from which test comes
                 
 
             Results:
@@ -221,6 +231,10 @@ class cultures( uty ):
                         "conditions":conditions,
                         "listed":listed,
                         "homePage":homePage,
+                        "specimen":specimen,
+                        "technique":technique,
+                        "runTime":runTime,
+                        "section":section,
                         "id":id}
 
             
@@ -268,7 +282,8 @@ class cultures( uty ):
     def create(self, name:str, deliveryTime:str, discountPrice:float, price:float,\
                pincodesAvailable:list, organs:list = [], assoicatedNames:list = [],\
                components:list = [], conditions:list = [], listed:int = 1,\
-               homePage:int = 0, preTest:str = "") -> dict:
+               homePage:int = 0, specimen:str = "", technique:str = "", runTime:str ="",\
+               section:str ="", preTest:str = "") -> dict:
 
         """
             Function for creating tests, these tests can be the test that are
@@ -289,6 +304,10 @@ class cultures( uty ):
                 conditions(list)   :list of disease or conditions for which test is required
                 listed(int)        :is this test listed for indenpent booking - default 1
                 homePage(int)      :will this test show on homePage - default 0
+                specimen(str)      :type of sample collected 
+                technique(str)     :technique used in sample analysis
+                runTime            :time taken to analyse sample
+                section            :section from which test comes
                 associatedNames(list)   :list of names that resonate with the tests
                 
 
@@ -330,10 +349,10 @@ class cultures( uty ):
 
 
             cultureCreate = self.db.query("insert into cultures (name, deliveryTime, components, assoicatedNames, numberOfParameters, preTest, price,\
-                                           discountPrice, pincodesAvailable, organs, conditions,  listed, homePage) values \
-                                          ('{}', '{}', '{}', '{}', {}, '{}', {}, {}, '{}', '{}', '{}', {}, {})".format(
+                                           discountPrice, pincodesAvailable, organs, conditions,  listed, homePage, specimen, technique, runTime, section) values \
+                                          ('{}', '{}', '{}', '{}', {}, '{}', {}, {}, '{}', '{}', '{}', {}, {}, '{}', '{}', '{}', '{}')".format(
                                            name, deliveryTime, components, assoicatedNames, numberOfParameters, preTest, price,
-                                           discountPrice, pincodesAvailable, organs, conditions, listed, homePage))
+                                           discountPrice, pincodesAvailable, organs, conditions, listed, homePage, specimen, technique, runTime, section))
 
             if cultureCreate["result"]:
 
@@ -359,24 +378,25 @@ class cultures( uty ):
 
     
 
-
 """
-cultures().create( name="K.F.T", deliveryTime="1 Day", discountPrice=200, price = 800, pincodesAvailable = ["834001", "834002", "834003"], organs = ["kidney"],\
-                assoicatedNames = ["Kidney Function Test"], preTest="Empty Stomach",\
-               components=["CBC", "RBC"], conditions=["Dibetise"], listed = 1,\
-               homePage = 0
-)        
 
-print(cultures().update(id=2, name="K.F.T_1", deliveryTime="1 Day", discountPrice=200, price = 800, pincodesAvailable = ["834001", "834002", "834003"], organs = ["kidney"],\
+print(cultures().create( name="K.F.T", deliveryTime="1 Day", discountPrice=200, price = 800, pincodesAvailable = ["834001", "834002", "834003"], organs = ["kidney"],\
                 assoicatedNames = ["Kidney Function Test"], preTest="Empty Stomach",\
                components=["CBC", "RBC"], conditions=["Dibetise"], listed = 1,\
-               homePage = 0
+               homePage = 0, specimen = "blood", runTime="1day", section="hemotology"
+))   
+
+print(cultures().update(id = 3, name="K.F.T", deliveryTime="1 Day", discountPrice=200, price = 800, pincodesAvailable = ["834001", "834002", "834003"], organs = ["kidney"],\
+                assoicatedNames = ["Kidney Function Test"], preTest="Empty Stomach",\
+               components=["CBC", "RBC"], conditions=["Dibetise"], listed = 1,\
+               homePage = 0, specimen = "blood", runTime="1day", section="hemotology1"
 ))
 
 """
 
 
-#print(cultures().read(name="K.F.T", pincodesAvailable=["834001"]))
+
+#print(cultures().read(section="hemotology"))
 
 #print(cultures().delete(id=1))
 
