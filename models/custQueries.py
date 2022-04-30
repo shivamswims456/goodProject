@@ -274,7 +274,7 @@ class custQueries( uty ):
 print(custQueries().create(custName = "shivam", custEmail="shivamswims456@gmail.com", phoneNumber="9693432136",
                      particularName = "K.F.T_1", particularId = 1, particularSec = 1, payment = "C.O.D",
                      status = "INTIALIZED", reportLink = ""))
-
+    
 
 print(custQueries().update(id = 1, custName = "shivam1", custEmail="shivamswims456@gmail.com", phoneNumber="9693432136",
                      particularName = "K.F.T_1", particularId = 1, particularSec = 1, payment = "C.O.D",
