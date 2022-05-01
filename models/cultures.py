@@ -209,6 +209,25 @@ class cultures( uty ):
             Results:
                 result(dict):      {"result":True/False, "data":"Successful/Error Code"}
 
+                    {"name":0,
+                     "deliveryTime":1,
+                     "components":2,
+                     "assoicatedNames":3,
+                     "numberOfParameters":4,
+                     "preTest":5,
+                     "price":6,
+                     "discountPrice":7,
+                     "pincodesAvailable":8,
+                     "organs":9,
+                     "conditions":10,
+                     "listed":11,
+                     "homePage":12,
+                     "specimen":13,
+                     "technique":14,
+                     "runTime":15,
+                     "section":16,
+                     "id":17}
+
             
 
         """
@@ -396,7 +415,7 @@ print(cultures().update(id = 3, name="K.F.T", deliveryTime="1 Day", discountPric
 
 
 
-#print(cultures().read(section="hemotology"))
+#print(cultures().read())
 
 #print(cultures().delete(id=1))
 

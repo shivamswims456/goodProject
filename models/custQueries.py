@@ -45,7 +45,7 @@ class custQueries( uty ):
 
     def update(self, id:int = None, custName:str = None, custEmail:str = None, phoneNumber:str = None,\
               particularName:str = None, particularId:str = None, particularSec:float = None,\
-              payment:str = None, status:str = None, reportLink:str = None) -> dict:
+              payment:str = None, status:str = None, reportLink:str = None, prescriptionPath:str = "") -> dict:
 
         """
             Function for reading booked queries
@@ -86,7 +86,8 @@ class custQueries( uty ):
                               "particularSec":particularSec,
                               "payment":payment,
                               "status":status,
-                              "reportLink":reportLink}
+                              "reportLink":reportLink,
+                              "prescriptionPath":prescriptionPath}
              
                 
                 updateQuery = self.updateQuery(parameters=parameters, table="custQueries") + " where id = {}".format(id)
@@ -137,7 +138,7 @@ class custQueries( uty ):
 
     def read(self, id:int = None, custName:str = None, custEmail:str = None, phoneNumber:str = None,\
              particularName:str = None, particularId:str = None, particularSec:float = None,\
-             payment:str = None, status:str = None, reportLink:str = None, bookedTime:str = None) -> dict:
+             payment:str = None, status:str = None, reportLink:str = None, bookedTime:str = None, prescriptionPath:str = "") -> dict:
 
 
 
@@ -155,6 +156,7 @@ class custQueries( uty ):
             status:str = "INITIALIZED" status of the query,
             reportLink:str = "Link of the report" 
             bookedTime:time = "Time of booking"
+            prescriptionPath = path of prescription Uploaded
         Returns:
             {"result":True/False, "data:"Successful"/"Error"}
             
@@ -175,7 +177,8 @@ class custQueries( uty ):
              "payment":payment,
              "status":status,
              "reportLink":reportLink,
-             "bookedTime":bookedTime}
+             "bookedTime":bookedTime,
+             "prescriptionPath":prescriptionPath}
 
     
             searchQuery = self.makeQuery(parameters=parameters, table="custQueries")[:-1] + " order by bookedTime DESC"
@@ -209,7 +212,7 @@ class custQueries( uty ):
 
 
     def create(self, custName:str, custEmail:str, phoneNumber:str, particularName:str, particularId:str,\
-               particularSec:float,  payment:str, status:str = "INITIALIZED", reportLink:str = "") -> dict:
+               particularSec:float,  payment:str, status:str = "INITIALIZED", reportLink:str = "", prescriptionPath:str = "") -> dict:
 
         """
         
@@ -224,6 +227,7 @@ class custQueries( uty ):
             payment:str = payment Status of the query,
             status:str = "INITIALIZED" status of the query,
             reportLink:str = "Link of the report" 
+            prescriptionPath = path of prescription Uploaded
         Returns:
             {"result":True/False, "data:"Successful"/"Error"}
 
@@ -236,10 +240,10 @@ class custQueries( uty ):
         try:
 
             custQuery = self.db.query("insert into custQueries (custName, custEmail, phoneNumber, particularName,\
-                                            particularId, particularSec, payment, status, reportLink) values \
-                                        ('{}', '{}', '{}', '{}', {}, {}, '{}', '{}', '{}');".format(
+                                            particularId, particularSec, payment, status, reportLink, prescriptionPath) values \
+                                        ('{}', '{}', '{}', '{}', {}, {}, '{}', '{}', '{}', '{}');".format(
                                             custName, custEmail, phoneNumber, particularName,\
-                                            particularId, particularSec, payment, status, reportLink))
+                                            particularId, particularSec, payment, status, reportLink, prescriptionPath))
 
             if custQuery["result"]:
 
@@ -269,13 +273,13 @@ class custQueries( uty ):
 
 
 
-"""
+
 
 print(custQueries().create(custName = "shivam", custEmail="shivamswims456@gmail.com", phoneNumber="9693432136",
                      particularName = "K.F.T_1", particularId = 1, particularSec = 1, payment = "C.O.D",
-                     status = "INTIALIZED", reportLink = ""))
+                     status = "INTIALIZED", reportLink = "", prescriptionPath="good"))
     
-
+"""
 print(custQueries().update(id = 1, custName = "shivam1", custEmail="shivamswims456@gmail.com", phoneNumber="9693432136",
                      particularName = "K.F.T_1", particularId = 1, particularSec = 1, payment = "C.O.D",
                      status = "INTIALIZED", reportLink = ""))

@@ -58,59 +58,59 @@ class csvHelper( object ):
 
                 temp = []
 
-                for row in csvList[1:]:
-                    
-                    if len(temp) != 0 and temp[0] != "" and row[counterRow] != "":
+                try:
 
-                        temp += [len(temp[1]), 0, [834001, 834002], 1, 0, ""]
+                    for row in csvList[1:]:
+                        
+                        if len(temp) != 0 and temp[0] != "" and row[counterRow] != "":
+
+                            temp += [len(temp[1]), 0, [834001, 834002], 1, 0, ""]
 
 
-                        self.cultures.create(name=temp[0], deliveryTime = temp[4], price = temp[2], pincodesAvailable = temp[13], assoicatedNames = temp[9],\
-                                             preTest=temp[7], components = temp[1], conditions = temp[8], listed = temp[14], homePage = temp[15], specimen = temp[16],\
-                                             runTime = temp[5], section = temp[6], discountPrice = 0)
+                            self.cultures.create(name=temp[0], deliveryTime = temp[4], price = temp[2], pincodesAvailable = temp[13], assoicatedNames = temp[9],\
+                                                preTest=temp[7], components = temp[1], conditions = temp[8], listed = temp[14], homePage = temp[15], specimen = temp[16],\
+                                                runTime = temp[5], section = temp[6], discountPrice = 0)
+
+                            
+
+                        if row[counterRow] != "":
+
+                            temp = ["", [], "", "", "", "", "", [], [], [], []] 
+                            
+
+                            for index, each in enumerate(row):
 
                         
+                                if temp[index] == "":
 
-                    if row[counterRow] != "":
+                                    temp[index] = each.replace("\n", "")
 
-                        temp = ["", [], "", "", "", "", "", [], [], [], []] 
-                        
+                                else:
 
-                        for index, each in enumerate(row):
-
-                     
-                            if temp[index] == "":
-
-                                temp[index] = each.replace("\n", "")
-
-                            else:
-
-                                temp[index].append(each.replace("\n", ""))
+                                    temp[index].append(each.replace("\n", ""))
 
 
 
-                    else:
+                        else:
 
-                        for index, each in enumerate(row):
+                            for index, each in enumerate(row):
 
-                            if type(temp[index]) == list and each != "":
+                                if type(temp[index]) == list and each != "":
 
-                                temp[index].append(each.replace("\n", ""))
+                                    temp[index].append(each.replace("\n", ""))
 
+                except Exception as e:
 
+                    result = {"result":False, "data":"File Parse Failed"}
+
+                    log.error(f'{{"csvImport_Parse_Failed":{{"filePath":{filePath}}}}}')
         else:
 
             log.error(f'{{"csvImport_FileRead_Failed":{{"filePath":{filePath}}}}}')
 
+
+        return result
+
         
 
-csvHelper().insert(filePath= r"C:\Users\Dell\Desktop\goodProject\goodProject\storage\admin\finalDatabaseDoc.csv")
-
-"""
-print(cultures().create( name="K.F.T", deliveryTime="1 Day", discountPrice=200, price = 800, pincodesAvailable = ["834001", "834002", "834003"], organs = ["kidney"],\
-                         assoicatedNames = ["Kidney Function Test"], preTest="Empty Stomach",\
-                         components=["CBC", "RBC"], conditions=["Dibetise"], listed = 1,\
-                         homePage = 0, specimen = "blood", runTime="1day", section="hemotology"
-))   
-
-"""
+#csvHelper().insert(filePath= r"C:\Users\Dell\Desktop\goodProject\goodProject\storage\admin\finalDatabaseDoc.csv")

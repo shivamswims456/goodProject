@@ -1,11 +1,29 @@
 from core.db import db
-import json
+from core.search import Trie
+import json, re
 
 class uty( object ):
 
     def __init__(self) -> None:
         self.db = db
+        self.Trie = Trie
 
+
+    def removeSpecial(self, string:str, subs:str = "") -> str:
+        """
+        Fuction intended for removing special string and substituting them with subs
+
+        Parameters
+            string(str):string to be parsed
+            subs(str):sub string
+
+        result:
+            parsed string
+        """
+
+        return re.sub('[^A-Za-z0-9 ]+', subs, string)
+
+        
 
     def updateQuery(self, parameters:dict, table:str) -> str:
 
@@ -71,7 +89,7 @@ class uty( object ):
         cols = str(tuple(parameters.keys())).replace("'", "").replace("(", "").replace(")", "")
 
         
-        searchQuery = f"select {cols} from {table} where "
+        searchQuery = ""
 
         for name, parameter in parameters.items():
 
@@ -111,7 +129,16 @@ class uty( object ):
 
                     searchQuery += " and "
 
-        searchQuery = searchQuery[:-5] + ";"
+
+        if searchQuery == "":
+
+            searchQuery = f"select {cols} from {table};"
+
+        else:
+
+
+            searchQuery = f"select {cols} from {table}; where " + searchQuery[:-5] + ";"
+            
 
         return searchQuery
         
