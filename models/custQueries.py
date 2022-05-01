@@ -1,6 +1,3 @@
-from inspect import Parameter
-
-from requests import delete
 import base, logging as log, json
 from uty import uty
 
