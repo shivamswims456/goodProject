@@ -12,11 +12,13 @@ class server( object ):
 
     def getApplication(self, routes):
 
-        routes.append((self.base.getEnv("themeAssets"), tornado.web.StaticFileHandler, {"path", self.base.getEnv("staticPath")}))
+        print()
+
+        routes.append((f'{self.base.getEnv("themeAssets")}(.*)'.format(self.base.getEnv("themeAssets")), tornado.web.StaticFileHandler, {"path": self.base.getEnv("staticPath")}))
 
         settings = {"debug": self.base.getEnv("serverDebug"),
                     "reload": self.base.getEnv("serverReload"),
-                    "cookieSecret": self.base.getEnv("cookieSecret"),
+                    "cookie_secret": self.base.getEnv("cookieSecret"),
                     "login_url":self.base.getEnv("loginUrl"),
                     "template_path":self.base.getEnv("templatePath"),
                     "xsrf_cookies":self.base.getEnv("xsrfCookie")}
