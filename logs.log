@@ -1,3 +1,19 @@
-ERROR[db.py:__query__:132]:queryError -> 1054 (42S22): Unknown column 'prescriptionPath' in 'field list'
-ERROR[custQueries.py:create:255]:{"custQueries_Create_Error":{custName:shivam, custEmail:shivamswims456@gmail.com, phoneNumber:9693432136, particularName:K.F.T_1, particularId:1, particularSec:1, payment:C.O.D, status:INTIALIZED, reportLink:}}
-INFO[custQueries.py:create:251]:{"custQueries_Create_Error":{custName:shivam, custEmail:shivamswims456@gmail.com, phoneNumber:9693432136, particularName:K.F.T_1, particularId:1, particularSec:1, payment:C.O.D, status:INTIALIZED, reportLink:}}
+INFO[login.py:getUsers:309]:{"login_getUser_Successful":{"userName":shivam}}
+ERROR[login.py:matchPassword:238]:{"login_matchPassword_Successful":{"userName":shivam}}
+INFO[conditions.py:create:208]:{Condition_Added_Successfully: {"condition":Dengue, "listed":0}}
+INFO[pincodes.py:read:111]:{Pincode_Read_Pincodes_Successful: {'result': True, 'data': ['834001']}
+ERROR[db.py:__query__:133]:queryError -> Use multi=True when executing multiple statements
+ERROR[db.py:query:85]:{"db_query_failed":select name, deliveryTime, components, assoicatedNames, numberOfParameters, preTest, price, discountPrice, pincodesAvailable, organs, conditions, listed, homePage, specimen, technique, runTime, section, id from cultures; where id = 4;, "error":Unread result found}
+ERROR[cultures.py:read:284]:{Cultures_Create_Query_Error:  {name:None, deliveryTime:None, components:[], assoicatedNames:[], numberOfParameters:None, preTest:None, price:None, discountPrice:None, pincodesAvailable:None, organs:[], conditions:[], listed:None, homePage:None}}
+INFO[cultures.py:read:280]:{Cultures_Read_Successful:  {'result': True, 'data': [['RBC Count', '', [''], [''], 1, "[']", 100.0, 0.0, [834001, 834002], [], [''], 1, 0, '', '', 'Daily', 'HAEMATOLOGY', 4]]}}
+INFO[cultures.py:read:280]:{Cultures_Read_Successful:  {'result': True, 'data': [['RBC Count', '', [''], [''], 1, "[']", 100.0, 0.0, [834001, 834002], [], [''], 1, 0, '', '', 'Daily', 'HAEMATOLOGY', 4]]}}
+ERROR[db.py:__query__:133]:queryError -> 1136 (21S01): Column count doesn't match value count at row 1
+ERROR[razorPay.py:__store:57]:{"Razorpay_Order_Store_Error":{"name":shivam, "amount":9, "orderId":order_JQYbHxVcrGh7Oo}}
+INFO[razorPay.py:createOrder:117]:{"Razorpay_Order_Store_Successful":{"name":shivam, "amount":9, "currency":INR, "orderId":order_JQYbHxVcrGh7Oo}}
+ERROR[db.py:__query__:133]:queryError -> 1136 (21S01): Column count doesn't match value count at row 1
+ERROR[razorPay.py:__store:57]:{"Razorpay_Order_Store_Error":{"name":shivam, "amount":9, "orderId":order_JQYdMyX3TBnGth}}
+INFO[razorPay.py:createOrder:117]:{"Razorpay_Order_Store_Successful":{"name":shivam, "amount":9, "currency":INR, "orderId":order_JQYdMyX3TBnGth}}
+INFO[razorPay.py:__store:51]:{"Razorpay_Order_Store_Successful":{"name":shivam, "amount":9, "orderId":order_JQYdckVJ3Ltt6y}}
+INFO[razorPay.py:createOrder:117]:{"Razorpay_Order_Store_Successful":{"name":shivam, "amount":9, "currency":INR, "orderId":order_JQYdckVJ3Ltt6y}}
+INFO[razorPay.py:__store:51]:{"Razorpay_Order_Store_Successful":{"name":shivam, "amount":9, "orderId":order_JQYdti0HTkVSwp}}
+INFO[razorPay.py:createOrder:117]:{"Razorpay_Order_Store_Successful":{"name":shivam, "amount":9, "currency":INR, "orderId":order_JQYdti0HTkVSwp}}
