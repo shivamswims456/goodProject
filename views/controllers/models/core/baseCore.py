@@ -37,4 +37,4 @@ class base( object ):
                 self.env[each] = val
 
 
-print(os.listdir(base().getEnv("staticPath")), os.getcwd())
+#print(os.listdir(base().getEnv("staticPath")), os.getcwd())

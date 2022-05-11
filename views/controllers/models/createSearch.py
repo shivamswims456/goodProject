@@ -156,7 +156,7 @@ class testSearch( uty ):
             self.__buildTrie(queryTerms=queryTerms)
 
 
-"""         
+""" 
 t = testSearch()
 while True:        
     print("param")
@@ -165,5 +165,4 @@ while True:
         break
     else:
         print(t.cultureSearch(param.upper()))
-        
-"""
+         """

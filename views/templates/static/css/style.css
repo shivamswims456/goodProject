@@ -4015,3 +4015,49 @@ label {
 footer {
     background-image: url(../static/img/bg/testimonial_bg.jpg);
 }
+.addToCart:hover {
+    background-color: var(--hoverBColor)!important;
+}
+.addToCart:active {
+    cursor: grab!important;
+    background-color: var(--textHigh)!important;
+}
+#notificationSuccess {
+    top: 20%;
+    right: 1%;
+    margin: 0.5%;
+    width: fit-content;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    color: white;
+    height: 10%;
+    z-index: 999999;
+    border-radius: 0.3rem;
+    align-items: center;
+    background-color: var(--mainBColor);
+    border: 1px solid var(--hoverBColor);
+    font-size: 0.9rem;
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+#notificationError {
+    top: 20%;
+    right: 1%;
+    margin: 0.5%;
+    color: white;
+    width: fit-content;
+    height: 10%;
+    z-index: 999999;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 0.3rem;
+    background-color: var(--hoverBColor);
+    border: 1px solid var(--mainBColor);
+    font-size: 0.9rem;
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+}

@@ -12,9 +12,9 @@ class server( object ):
 
     def getApplication(self, routes):
 
-        print()
+        print(r'/static/(.*)', os.getcwd())
 
-        routes.append((f'{self.base.getEnv("themeAssets")}(.*)'.format(self.base.getEnv("themeAssets")), tornado.web.StaticFileHandler, {"path": self.base.getEnv("staticPath")}))
+        routes.append((f'/{self.base.getEnv("themeAssets")}/(.*)', tornado.web.StaticFileHandler, {"path": self.base.getEnv("staticPath")}))
 
         settings = {"debug": self.base.getEnv("serverDebug"),
                     "reload": self.base.getEnv("serverReload"),

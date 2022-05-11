@@ -648,7 +648,7 @@
         position: relative;
         z-index: 9;
         top: 3px;
-        left: 85%;
+        /* left: 85%; */
         border: 1px solid var(--hoverBColor);
         border-radius: 50%;
         color: var(--mainBColor);

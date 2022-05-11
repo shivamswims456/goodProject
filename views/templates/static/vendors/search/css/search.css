@@ -1,0 +1,95 @@
+.searchTable {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    overflow-y: auto;
+    border: 1px solid black;
+    z-index: 10;
+}
+
+.spanButton {
+    cursor: pointer;
+}
+
+.mustHide {
+    display: none!important;
+}
+
+.searchHidden {
+    display: none;
+}
+
+.searchTable ul {
+    list-style: none;
+}
+
+.searchTable ul>li {
+    border-bottom: 1px solid grey;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.searchTable>li>div {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.searchTable>li>ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.searchTable>li>ul>li {
+    font-size: 1.3rem;
+}
+
+.searchTable>li>ul>li>a {
+    text-decoration: none;
+    display: flex;
+}
+
+.histCross {
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 0.1rem;
+    width: auto;
+}
+
+.searchTable>li>ul>li>a>span {
+    text-decoration: none;
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    padding-left: 0.5rem;
+}
+
+
+/* .searchHistory>li>a::before {
+    display: flex;
+    content: "\1F7AD";
+    padding-left: 1rem;
+    padding-right: 0.1rem;
+} */
+
+.searchPromote>li>a::before {
+    display: flex;
+    content: "\2726";
+    padding-left: 1rem;
+    padding-right: 0.1rem;
+}
+
+.searchTable>li>ul>li>a::after {
+    display: flex;
+    content: "\2924";
+    padding-right: 1rem;
+    font-weight: 600;
+}
+
+.searchResult>li>a>span {
+    margin-left: 1rem;
+}

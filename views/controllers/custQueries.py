@@ -1,6 +1,6 @@
 import json
-from controllers.models.core.server import baseHandler
-from controllers.models import custQueries
+from models.core.server import baseHandler
+from models import custQueries
 
 custQueries = custQueries()
 

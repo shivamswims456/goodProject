@@ -416,7 +416,7 @@ print(cultures().update(id = 3, name="K.F.T", deliveryTime="1 Day", discountPric
 
 
 
-print(cultures().read(id=4))
+#print(cultures().read(id=4))
 
 #print(cultures().delete(id=1))
 

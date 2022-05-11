@@ -1,5 +1,0 @@
-$(document).read((e) => {
-
-
-
-})

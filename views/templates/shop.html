@@ -1,0 +1,160 @@
+{% extends base.html %}{% block title %} Antila Labs | {{ testContent["data"][0]["name"] }} {% end %} {% block content %}
+<!-- main-area -->
+<main>
+
+    <!-- breadcrumb-area -->
+
+    <!-- breadcrumb-area-end -->
+
+    <!-- shop-details-area -->
+    <div class="shop-details-area shop-inner-page pt-60 pb-60">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-12">
+                    <div class="shop-details-wrap">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-12 col-sm-12">
+                                <div class="shop-details-content">
+
+                                    <h2 class="title">{{ testContent["data"][0]["name"] }}</h2>
+                                    <div class="d-flex">
+                                        <span style="color: rgba(40, 40, 40, 0.7);">Includes:</span><span style="font-weight: 700;color: var(--hoverBColor);"> {{ testContent["data"][0]["numberOfParameters"] }} tests</span>
+                                    </div>
+
+
+                                    <p style="font-size: 1.1rem;margin-top: 1rem;color: rgba(40, 40, 40, 0.7);">
+                                        T3,T4, TSH, Quick Precise Reports, Reporting as per NABL ISO guidelines, Home Sample Collection, Free Doctor's Consultation
+                                    </p>
+
+                                    <div class="product-desc-wrap">
+                                        <ul class="nav nav-tabs" id="myTabTwo" role="tablist">
+
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="list-home-list" data-bs-toggle="tab" href="#list-home" role="tab" aria-controls="list-home">Test Criteria</a></li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="list-profile-list" data-bs-toggle="tab" href="#list-profile" role="tab" aria-controls="list-profile">Components</a></li>
+
+                                        </ul>
+                                        <div class="tab-content" id="myTabContentTwo">
+                                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+                                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list" style="padding-right: 1rem;">
+                                                <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                                                    {% for components in testContent["data"][0]["components"] %} {% if components != "" %}
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="flush-headingOne">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                                {{ components }}
+                                                                </button>
+                                                        </h2>
+                                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                                            <div class="accordion-body"><code>{{ components }}</code></div>
+                                                        </div>
+                                                    </div>
+                                                    {% end %} {% end %} {% if len(testContent["data"][0]["components"]) == 1 and testContent["data"][0]["components"][0] == "" %}
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="flush-headingOne">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                                    {{ testContent["data"][0]["name"] }}
+                                                                    </button>
+                                                        </h2>
+                                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                                            <div class="accordion-body"><code>{{ testContent["data"][0]["name"] }}</code></div>
+                                                        </div>
+                                                    </div>
+                                                    {% end %}
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12" style="margin-top: 3rem;border: 1px solid var(--mainBColor);border-radius: 0.5rem;height: fit-content;padding-bottom: 1rem;margin-left: 1vw;margin-right: 1vw;">
+                                <div class="shop-content">
+                                    <div class="shop-bottom" style="padding-top: 2rem;padding-bottom: 1rem;border-bottom: 1px solid var(--mainBColor);">
+                                        <ul>
+                                            {% if testContent["data"][0]["discountPrice"] != 0 and testContent["data"][0]["discountPrice"]\
+                                            < testContent[ "data"][0][ "price"] %} <li class="price">
+
+                                                ₹{{ testContent["data"][0]["discountPrice"] }}
+                                                <p class="shop-discount">MRP <del>₹{{ testContent["data"][0]["price"] }}</del>
+                                                    </li>
+                                                    <li>
+                                                        <div class="shop-details-quantity">
+                                                            <a href="javascript:;" class="cart-btn"><span class="discount-off">{{  int(((testContent["data"][0]["price"] - testContent["data"][0]["discountPrice"] )/testContent["data"][0]["price"]) * 100) }}% OFF</span></p></a>
+                                                        </div>
+                                                    </li>
+
+                                                    {% else %}
+
+                                                    <li class="price">
+                                                        Price
+                                                    </li>
+
+
+                                                    <li class="price">
+
+
+
+                                                        ₹{{ testContent["data"][0]["price"] }}
+
+                                                    </li>
+
+                                                    {% end %}
+                                        </ul>
+                                    </div>
+
+                                    <div class="d-flex" style="padding-top: 1rem;border-bottom: 1px solid var(--mainBColor);">
+                                        <div class="d-flex"><span style="padding-right: 5%;font-size: 18px;">Home Collection </span></div>
+                                        <div class="d-flex justify-content-end" style="width: 70%;">
+                                            <form action="#" class="newsletter-form">
+                                                <input type="text" placeholder="Pincode/City">
+                                                <button><i class="fa fa-biking"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span style="font-size: 18px;">Total Cost</span>
+                                        <span style="font-size: 18px;">$1234</span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center buyNow align-items-center" style="height: 3rem;background-color: var(--mainBColor);color: white;margin-top: 2rem;border-radius: 0.5rem;cursor: pointer;">
+                                        <span style="font-size: 18px;"> Book Now </span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center addToCart align-items-center" style="height: 3rem;background-color: var(--mainBColor);color: white;margin-top: 0.2rem;border-radius: 0.5rem;cursor: pointer;font-size: 18px;" data-id="{{ testContent['data'][0]['id'] }}"
+                                        data-nature="add">
+                                        {% module xsrf_form_html() %} Add to Cart
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- shop-details-area-end -->
+
+</main>
+
+
+<!-- main-area-end -->
+
+{% end %}

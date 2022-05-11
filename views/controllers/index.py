@@ -1,4 +1,4 @@
-from controllers.models.core.server import baseHandler
+from models.core.server import baseHandler
 class index( baseHandler ):
 
     def get(self):
