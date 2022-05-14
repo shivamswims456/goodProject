@@ -34,7 +34,10 @@ class addToCart( baseHandler ):
 
             elif nature == "count":
 
+                
+
                 result = {"result":True, "data":{"count":len(cart)}}
+
 
 
             cart = list(cart)
@@ -46,6 +49,8 @@ class addToCart( baseHandler ):
             
 
         except Exception as e:
+
+            print(e)
 
             result = {"result":False, "data":"cartCookieSetError"}
 

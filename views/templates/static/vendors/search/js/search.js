@@ -1,9 +1,15 @@
 import { cookie } from "./cookies.js";
 
 //TO-DO:add history support
-class searchList {
+export class searchList {
 
     constructor(base) {
+
+        this.hPercent = 40;
+
+        this.funcPlug = () => {};
+
+        this.href = true;
 
         this.base = base;
         this.addresses = {
@@ -25,6 +31,8 @@ class searchList {
         this.tableName = this.getBase().dataset.search;
         this.cookies = new cookie();
         this.cookieName = "hist" + this.tableName;
+        this.lastCookie = "last" + this.tableName;
+        this._1 = () => { return 0 };
 
 
 
@@ -40,19 +48,19 @@ class searchList {
     }
 
 
-    resultRender(e, data) {
+    resultRender(data) {
 
-        this.fetchHandlers["result"][0] = data;
+        let val = this.getBase().value;
 
-        if (e.currentTarget.value.length == 0) {
+        this.fetchHandlers["result"] = data;
+
+        if (val.length == 0) {
 
             this.zeroType();
 
         } else {
 
             this.someType();
-            let val = this.getBase().value;
-
             this.reRender();
             this.someType();
             this.getBase().value = val;
@@ -83,6 +91,23 @@ class searchList {
     }
 
 
+    getLast() {
+
+        let previous = this.cookies.getCookie(this.lastCookie);
+
+        if (previous != null) {
+
+            previous = Object.keys(JSON.parse(previous))[0]
+
+
+        }
+
+        return previous;
+    }
+
+
+
+
     cookieAdd(data) {
 
         let previous = this.cookies.getCookie(this.cookieName);
@@ -91,6 +116,14 @@ class searchList {
         if (previous != null) {
 
             previous = JSON.parse(previous);
+            let previousKeys = Object.keys(previous);
+
+            if (previousKeys.length >= 4) {
+
+                delete previous[previousKeys[0]]
+
+            }
+
 
 
         } else {
@@ -111,7 +144,7 @@ class searchList {
         delete previous[key]
         this.cookies.setCookie(this.cookieName, JSON.stringify(previous));
         this.reRender();
-        this.getTable().classList.toggle("searchHidden");
+        this.getTable().classList.remove("searchHidden");
 
     }
 
@@ -119,7 +152,7 @@ class searchList {
 
         this.cookies.setCookie(this.cookieName, "{}");
         this.reRender();
-        this.getTable().classList.toggle("searchHidden");
+        this.getTable().classList.remove("searchHidden");
 
 
     }
@@ -154,6 +187,12 @@ class searchList {
         }
 
 
+        window.addEventListener("scroll", () => {
+
+            this.positionIt();
+        })
+
+
         //queryClick
 
         document.querySelector(`#${this.tableName} .clearAllHistory`).addEventListener("click", () => {
@@ -171,15 +210,26 @@ class searchList {
 
                 if (e.target.textContent.includes("🞭")) {
 
+                    e.preventDefault();
+
                     this.removeSingleHistory(e.target.parentElement.textContent.replace("🞭", ""));
 
                 } else {
 
                     let data = {
-                        [e.currentTarget.textContent.replace("🞭", "")]: e.currentTarget.href
+                        [e.currentTarget.textContent.replace("🞭", "")]: this.href ? e.currentTarget.href : e.currentTarget.dataset.href
                     };
 
+                    this.getBase().value = e.currentTarget.textContent.replace("🞭", "");
+
+
+                    this.cookies.setCookie(this.lastCookie, JSON.stringify(data));
                     this.cookieAdd(data);
+
+                    console.log("called good")
+
+                    console.log(this.funcPlug())
+
                     this.reRender();
 
 
@@ -197,7 +247,7 @@ class searchList {
 
         document.addEventListener("click", (e) => {
 
-            console.log(document.activeElement !== this.getBase(), !this.getTable().classList.contains("searchHidden"), !e.target.textContent.includes("🞭"), !e.target.classList.contains("clearAllHistory"));
+            /* console.log(document.activeElement !== this.getBase(), !this.getTable().classList.contains("searchHidden"), !e.target.textContent.includes("🞭"), !e.target.classList.contains("clearAllHistory")); */
 
             if (document.activeElement !== this.getBase() && !this.getTable().classList.contains("searchHidden") && !e.target.textContent.includes("🞭") && !e.target.classList.contains("clearAllHistory")) {
 
@@ -216,31 +266,15 @@ class searchList {
 
             this.getTable().classList.remove("searchHidden");
 
+
+
         });
 
 
-        /* 
-                this.getBase().addEventListener("keyup", (e) => {
 
 
-                    if (e.currentTarget.value.length == 0) {
 
-                        this.zeroType();
 
-                    } else {
-
-                        this.someType();
-                        let val = this.getBase().value;
-
-                        this.reRender();
-                        this.someType();
-                        this.getBase().value = val;
-                        this.getBase().focus();
-                        this.getTable().classList.remove("searchHidden");
-
-                    }
-
-                }); */
 
     }
 
@@ -310,7 +344,7 @@ class searchList {
             let searchObj = this.fetchHandlers[section][0],
                 count = Object.keys(searchObj).length;
 
-            console.log(section, count)
+            /* console.log(section, count, searchObj) */
 
 
             if (this.fetchHandlers[section][1] == 1 && count > 0) {
@@ -321,12 +355,14 @@ class searchList {
 
                     if (section == "history") {
 
-                        code += `<li class="updateOnKey"><a href=${searchObj[key]}><code class="histCross">&#128941;</code><span>${key}</span></a></li>`;
+
+
+                        code += `<li class="updateOnKey"><a href=${this.href ? searchObj[key]:"javascript:;"} data-href="${this.href ? "#":searchObj[key]}"><code class="histCross">&#128941;</code><span>${key}</span></a></li>`;
 
                     } else {
 
 
-                        code += `<li class="updateOnKey"><a href=${searchObj[key]}><span>${key}</span></a></li>`;
+                        code += `<li class="updateOnKey"><a href=${this.href ? searchObj[key]:"javascript:;"} data-href="${this.href ? "#":searchObj[key]}"><span>${key}</span></a></li>`;
                     }
 
 
@@ -360,8 +396,10 @@ class searchList {
 
     insertBase() {
 
+
+
         let codeBase = `
-    <div id="psElem">
+    
         
         <ul class="searchTable searchHidden" id="${this.tableName}">
 
@@ -411,26 +449,26 @@ class searchList {
             </li>
 
             </ul>
-            
-        <div>`;
+            `;
 
 
-        document.getElementsByTagName("body")[0].innerHTML += codeBase;
+        document.body.insertAdjacentHTML('beforeend', codeBase);
 
     }
 
     positionIt() {
 
+
         let inputTable = this.getTable(),
             bound = this.getBase().getBoundingClientRect(),
-            base = this.getBase()
+            base = this.getBase();
 
         inputTable.style.position = "fixed";
-        inputTable.style.top = bound.bottom + "px";
+        inputTable.style.top = (bound.bottom + this._1()) + "px";
         inputTable.style.left = bound.left + "px";
         inputTable.style.width = bound.right - bound.left + "px";
         inputTable.style.height = "auto";
-        inputTable.style.maxHeight = window.innerHeight - ((bound.top + base.height) + ((10 * window.innerHeight) / 100)) + "px";
+        inputTable.style.maxHeight = screen.availHeight - ((bound.top + base.height) + ((this.hPercent * screen.availHeight) / 100)) + "px";
 
 
     }
@@ -440,7 +478,7 @@ class searchList {
 }
 
 
-var inputSearch = 1;
+/* var inputSearch = 1;
 
 
 window.onload = () => {
@@ -453,4 +491,4 @@ window.onload = () => {
     inputSearch.render();
 
 
-}
+} */

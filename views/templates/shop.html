@@ -39,20 +39,12 @@
                                         <div class="tab-content" id="myTabContentTwo">
                                             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
                                             <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list" style="padding-right: 1rem;">
+
+
                                                 <div class="accordion accordion-flush" id="accordionFlushExample">
 
-                                                    {% for components in testContent["data"][0]["components"] %} {% if components != "" %}
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="flush-headingOne">
-                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                                {{ components }}
-                                                                </button>
-                                                        </h2>
-                                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                                            <div class="accordion-body"><code>{{ components }}</code></div>
-                                                        </div>
-                                                    </div>
-                                                    {% end %} {% end %} {% if len(testContent["data"][0]["components"]) == 1 and testContent["data"][0]["components"][0] == "" %}
+                                                    {% if len(testContent["data"][0]["components"]) == 1 and testContent["data"][0]["components"][0] =="" %}
+
                                                     <div class="accordion-item">
                                                         <h2 class="accordion-header" id="flush-headingOne">
                                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -63,11 +55,30 @@
                                                             <div class="accordion-body"><code>{{ testContent["data"][0]["name"] }}</code></div>
                                                         </div>
                                                     </div>
-                                                    {% end %}
+
+
+                                                    {%end%} {% for i, components in enumerate(testContent["data"][0]["components"]) %} {% if components !="" %}
 
 
 
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="flush-heading{{i}}">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{i}}" aria-expanded="false" aria-controls="flush-collapse{{i}}">
+                                                                        {{ components }}
+                                                                    </button>
+                                                        </h2>
+                                                        <div id="flush-collapse{{i}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{i}}" data-bs-parent="#accordionFlushExample">
+                                                            <div class="accordion-body">
+                                                                {{ components }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {% end %} {% end %}
                                                 </div>
+
+
+
                                             </div>
                                         </div>
 
@@ -115,15 +126,16 @@
                                         <div class="d-flex"><span style="padding-right: 5%;font-size: 18px;">Home Collection </span></div>
                                         <div class="d-flex justify-content-end" style="width: 70%;">
                                             <form action="#" class="newsletter-form">
-                                                <input type="text" placeholder="Pincode/City">
-                                                <button><i class="fa fa-biking"></i></button>
+
+                                                <input type="text" name="collection" placeholder="Pincode/City" id="_11" data-search="searchArea">
+                                                <input type="hidden" id="cost" data-search="searchArea" value='{{ testContent["data"][0]["discountPrice"] if testContent["data"][0]["discountPrice"] != 0 and testContent["data"][0]["discountPrice"]< testContent["data"][0]["price"] else testContent["data"][0]["price"] }}'>
                                             </form>
                                         </div>
                                     </div>
 
-                                    <div class="d-flex justify-content-between align-items-center">
+                                    <div class="justify-content-between align-items-center" id="totalPriceBar" style="display:none;">
                                         <span style="font-size: 18px;">Total Cost</span>
-                                        <span style="font-size: 18px;">$1234</span>
+                                        <span style="font-size: 18px;" id="totalPrice">1234</span>
                                     </div>
 
                                     <div class="d-flex justify-content-center buyNow align-items-center" style="height: 3rem;background-color: var(--mainBColor);color: white;margin-top: 2rem;border-radius: 0.5rem;cursor: pointer;">
@@ -132,7 +144,7 @@
 
                                     <div class="d-flex justify-content-center addToCart align-items-center" style="height: 3rem;background-color: var(--mainBColor);color: white;margin-top: 0.2rem;border-radius: 0.5rem;cursor: pointer;font-size: 18px;" data-id="{{ testContent['data'][0]['id'] }}"
                                         data-nature="add">
-                                        {% module xsrf_form_html() %} Add to Cart
+                                        Add to Cart
                                     </div>
 
                                 </div>

@@ -38,12 +38,13 @@
             $(this).prev('ul').slideToggle(500);
         });
         //Menu Toggle Btn
-        $('.mobile-nav-toggler').on('click', function() {
+        $('body').on('click', ".mobile-nav-toggler", function() {
+            console.log("good");
             $('body').addClass('mobile-menu-visible');
         });
 
         //Menu Toggle Btn
-        $('.menu-backdrop, .mobile-menu .close-btn').on('click', function() {
+        $("body").on('click', ".menu-backdrop, .mobile-menu .close-btn", function() {
             $('body').removeClass('mobile-menu-visible');
         });
     }

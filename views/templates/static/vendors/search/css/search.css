@@ -3,8 +3,12 @@
     padding: 0px;
     list-style: none;
     overflow-y: auto;
-    border: 1px solid black;
-    z-index: 10;
+    border: 0.1px solid var(--mainBColor);
+    z-index: 100;
+    padding-bottom: 1rem;
+    background: white;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem
 }
 
 .spanButton {
@@ -21,12 +25,18 @@
 
 .searchTable ul {
     list-style: none;
+    background: white;
+}
+
+.searchTable>ul {
+    padding-bottom: 1vh;
 }
 
 .searchTable ul>li {
     border-bottom: 1px solid grey;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    background: white;
 }
 
 .searchTable>li>div {
@@ -36,7 +46,8 @@
     padding-bottom: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    background: white;
 }
 
 .searchTable>li>ul {
@@ -45,7 +56,7 @@
 }
 
 .searchTable>li>ul>li {
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 .searchTable>li>ul>li>a {

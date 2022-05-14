@@ -375,7 +375,7 @@
         display: block;
     }
     #testMobileSearch {
-        display: flex;
+        display: none;
     }
     #menuebar {
         display: flex;

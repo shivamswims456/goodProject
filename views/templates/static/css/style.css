@@ -479,11 +479,9 @@ label {
     transform: translateY(-50%);
 }
 .header-search input {
-    padding: 7px 0px 7px 50px;
+    padding: 7px 0px 6px 50px;
     display: block;
     border-radius: 5px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
     font-size: 12px;
     font-weight: 400;
     color: var(--hoverBColor);
@@ -496,6 +494,7 @@ label {
     font-size: 12px;
     font-weight: 400;
     color: #8a8fa0;
+    text-align: center;
 }
 .header-user {
     margin-left: 25px;
@@ -728,10 +727,6 @@ label {
     width: 100%;
     z-index: 99;
     background: #fff;
-    -webkit-animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
-    animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
-    -webkit-box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
-    box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
     border-radius: 0;
 }
 .header-category {
@@ -4060,4 +4055,21 @@ footer {
     font-size: 1rem;
     justify-content: center;
     align-items: center;
+}
+#searchArea>.searchHistoryBar>div {
+    display: none;
+}
+#searchArea .updateOnKey>a::after {
+    display: none!important;
+}
+#searchArea .updateOnKey>a>span {
+    text-align: center;
+    padding-left: 0px!important;
+    margin-left: 0px!important;
+}
+#searchArea .histCross {
+    display: none;
+}
+#_11 {
+    padding: 7px 0px 7px 15px!important;
 }
